@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import Admin from './Components/Admins/LoginAdmin'
+import LoginAdmin from './Components/Admins/LoginAdmin'
 
 import { Button, Col } from 'react-bootstrap';
 
@@ -8,14 +8,21 @@ function App() {
 
   const [user, setUser ] = React.useState('home')
 
+  const sendDataToParents = (index) => {
+    console.log(index);
+    setUser(index)
+  };
+
+  console.log(user)
+
   if(user === 'admin'){
     return(
       <div>
-        <Admin/>
-        <Button as={Col} onClick={()=> setUser('home')} variant="danger">go back</Button>
+        <LoginAdmin sendDataToParent={sendDataToParents} />
       </div>
     )
   }
+
   else {
     return(
       <div className="App">

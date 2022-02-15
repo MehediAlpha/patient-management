@@ -1,5 +1,8 @@
-.App {
+*{
   font-family: 'Agency FB';
+  text-align: center;
+}
+.App {
   text-align: center;
   margin-top: 10%;
 }
