@@ -1,0 +1,18 @@
+.loginPatient{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:90vh;
+    text-align: center;
+}
+.loginPatient .header{
+    color: #fff;
+    font-weight: 800;
+}
+.inputBox{
+    width: 50vh;
+    text-align: center;
+    font-size: 20px;
+    margin: 20px;
+    padding: 10px;
+}

@@ -11,15 +11,13 @@ import AppointmentAdmin from './AppointmentAdmin'
 function HomepageAdmin({sendDataToParent}) {
   return(
     <Router>
-      
-        <NavAdmin sendDataToParent = {sendDataToParent}/>
+        <NavAdmin sendDataToParent = {sendDataToParent} />
         <Routes>
           <Route path='/' exact element={<HomeAdmin/>} />
           <Route path='/doctorAdmin' element={<DoctorAdmin/>} />
           <Route path='/patientAdmin' element={<PatientAdmin/>} />
           <Route path='/appointmentAdmin' element={<AppointmentAdmin/>} />
         </Routes>
-      
     </Router>
   )
 }
