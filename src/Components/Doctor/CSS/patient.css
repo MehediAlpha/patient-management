@@ -1,0 +1,18 @@
+.doctorPatient{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 2rem;
+}
+.doctorPatient .header{
+    color: #000;
+    font-weight: 800;
+}
+.inputBoxPD{
+    width: 50vh;
+    text-align: center;
+    font-size: 20px;
+    margin: 20px;
+    padding: 10px;
+}
