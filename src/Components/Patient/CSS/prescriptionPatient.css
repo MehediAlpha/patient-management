@@ -1,0 +1,15 @@
+.listSingle{
+    background-color: #fa9667 !important;
+    padding: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.listSingle .header{
+    font-size: 2rem;
+    text-align: left;
+}
+
+.listSingle .description{
+    font-size: 1.5rem;
+    text-align: left;
+}

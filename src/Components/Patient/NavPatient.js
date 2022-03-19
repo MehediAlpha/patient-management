@@ -19,7 +19,7 @@ const outStyle = {
 function NavPatient({sendDataToParent}) {
     return(
         <div >
-            <Navbar style={{backgroundColor:'#072227', paddingLeft:'4rem'}} expand="lg">
+            <Navbar style={{backgroundColor:'#072227', paddingLeft:'4rem'}} expand="lg" bg="dark" variant="dark">
             <Container fluid>
                 <Navbar.Brand style={{color:'#3EDBF0', fontSize: '2rem', fontWeight: 'bold', paddingRight:'4rem'}}>Hello, Patient</Navbar.Brand>
                 <Navbar.Toggle aria-controls="navbarScroll" />
