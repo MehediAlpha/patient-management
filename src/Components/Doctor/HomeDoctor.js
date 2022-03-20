@@ -16,6 +16,7 @@ function HomeDoctor() {
                                   </div>
                                   <h3 style={{fontSize:'2.2rem'}}>{doctorInfo.name}</h3>
                                   <p style={{fontSize:'1.5rem'}}>{doctorInfo.id}</p> 
+                                  <p style={{fontSize:'1.7rem'}}>Specialized : {doctorInfo.specialized}</p>
                                   
                               </div>
                           </div>
@@ -29,21 +30,22 @@ function HomeDoctor() {
                                           <h6 style={{fontSize:'1.5rem'}}>{doctorInfo.phone}</h6>
                                       </div>
                                       <div className="col-sm-6 m-b-40">
-                                          <p style={{fontSize:'1.7rem', fontWeight:'bold'}}>Relative Phone</p>
-                                          <h6 style={{fontSize:'1.5rem'}}>{doctorInfo.relativePhone}</h6>
-                                      </div>
-                                      <div className="col-sm-6 m-b-40">
                                           <p style={{fontSize:'1.7rem', fontWeight:'bold'}}>Email</p>
                                           <h6 style={{fontSize:'1.5rem'}}>{doctorInfo.email}</h6>
                                       </div>
                                       <div className="col-sm-6 m-b-40">
+                                          <p style={{fontSize:'1.7rem', fontWeight:'bold'}}>Duty Time</p>
+                                          <h6 style={{fontSize:'1.5rem'}}>{doctorInfo.dutyTime}</h6>
+                                      </div>
+                                      <div className="col-sm-6 m-b-40">
+                                          <p style={{fontSize:'1.7rem', fontWeight:'bold'}}>Education</p>
+                                          <h6 style={{fontSize:'1.5rem'}}>{doctorInfo.education}</h6>
+                                      </div>
+                                      <div className="col-sm-12 m-b-40">
                                           <p style={{fontSize:'1.7rem', fontWeight:'bold'}}>Address</p>
                                           <h6 style={{fontSize:'1.5rem'}}>{doctorInfo.address}</h6>
-                                      </div>
-                                      
-                                  </div>
-                                  
-                                  
+                                      </div>                                      
+                                  </div>                                  
                               </div>
                           </div>
                       </div>

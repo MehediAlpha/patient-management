@@ -1,5 +1,4 @@
 import React from 'react';
-import { Text } from 'react';
 import {Card, Button, Form} from 'react-bootstrap'
 import { patientInfo, previousMedicine} from './doctorData'
 import './CSS/patient.css'
@@ -49,8 +48,7 @@ function PatientDoctor() {
                 previousM.map((data, i) => {
                   return(
                     <div style={{marginBottom:'5rem'}} eventKey={i}>
-                      <p style={{fontSize: '2rem', textAlign:'left' }}>Date</p>
-                      <p style={{fontSize: '1.5rem', textAlign:'left' }}>{data.date}</p>
+                      <p style={{fontSize: '1.7rem', textAlign:'left', backgroundColor: '#fa9667', paddingLeft:'1rem'}}>Date - {data.date}</p>
                       <Form.Group className="inputBox col-md-12" style={{textAlign:'left'}}>
                       <Form.Label style={{fontSize:'2rem'}}>Medicine</Form.Label>
                         <Form.Control style={{textAlign:'left', fontSize:'1.5rem'}} as="textarea" rows={5} placeholder={data.description} />

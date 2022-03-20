@@ -2,6 +2,8 @@ import React from 'react';
 import { Button, Card, Col } from 'react-bootstrap';
 import './CSS/loginAdmin.css';
 
+import {setAdminInfo } from './adminData';
+
 import HomepageAdmin from './HomepageAdmin';
 
 
@@ -30,6 +32,7 @@ function LoginAdmin({sendDataToParent}) {
           alert('Password does not matched !');
         }
         else{
+          setAdminInfo(data)
           setSignedIn(true)
         }
       })

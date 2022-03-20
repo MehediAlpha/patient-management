@@ -4,9 +4,11 @@ let doctorInfo = {
     name: "Loading",
     id: "Loading",
     phone: "Loading",
-    relativePhone: "Loading",
     email: "Loading",
-    address: "Loading"
+    address: "Loading",
+    dutyTime: "Loading",
+    education: "Loading",
+    specialized: "Loading"
 }
 
 let patientInfo = {
@@ -14,7 +16,7 @@ let patientInfo = {
     id: "ID",
     phone: "Phone",
     email: "Email",
-    address: "Address"
+    address: "Address",
 }
 
 let previousMedicine = [
