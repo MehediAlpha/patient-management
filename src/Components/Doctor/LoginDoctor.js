@@ -2,6 +2,8 @@ import React from 'react';
 import { Button, Card, Col } from 'react-bootstrap';
 import './CSS/loginDoctor.css';
 
+import { setDoctorInfo } from './doctorData';
+
 import HomepageDoctor from './HomepageDoctor'
 
 
@@ -30,6 +32,7 @@ function LoginAdmin({sendDataToParent}) {
           alert('Password does not matched !');
         }
         else{
+          setDoctorInfo(data)
           setSignedIn(true)
         }
       })

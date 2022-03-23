@@ -5,7 +5,7 @@ import './CSS/prescriptionPatient.css'
 const id = [
   {
     id: 1,
-    date: 'loading',
+    date: '',
     name: 'loading'
   }
 ]

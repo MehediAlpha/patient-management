@@ -7,28 +7,74 @@ function AppointmentAdmin() {
   const [patientSearch, setPatientSearch] = React.useState('')
   const [patientInfo, setPatientInfo] = React.useState('')
 
-  const [doctorSearch, setDocotorSearch] = React.useState('')
-  const [doctorInfo, setDocotorInfo] = React.useState('')
+  const [doctorSearch, setDoctorSearch] = React.useState('')
+  const [doctorInfo, setDoctorInfo] = React.useState('')
 
   const searchPatient = () => {
     if(patientSearch){
-      console.log(patientSearch)
-    } else{
+      fetch('http://localhost:4000/searchPatient', {
+        method: 'post',
+        headers: {'content-type' : 'application/json',
+              'Accept': 'application/json'},
+        body: JSON.stringify({
+          id : patientSearch
+        })
+      })
+      .then(response => response.json())
+      .then(data => {
+        if(data === 'ID not found'){
+          alert(data)
+        }else{
+        console.log(data)
+        setPatientInfo(data)
+        }
+      })
+    }else{
       alert('Type Patient ID')
     }
   }
 
   const searchDoctor = () => {
     if(doctorSearch){
-      console.log(doctorSearch)
-    } else{
-      alert('Type Doctor ID')
+      fetch('http://localhost:4000/searchDoctor', {
+        method: 'post',
+        headers: {'content-type' : 'application/json',
+              'Accept': 'application/json'},
+        body: JSON.stringify({
+          id : doctorSearch
+        })
+      })
+      .then(response => response.json())
+      .then(data => {
+        if(data === 'ID not found'){
+          alert(data)
+        }else{
+          console.log(data)
+          setDoctorInfo(data)
+        }
+      })
+    }else{
+      alert('Type ID')
     }
   }
 
   const makeAppointment = () => {
-    if (patientSearch && doctorSearch && adminInfo.id){
-      console.log(` ${patientSearch}  ${doctorSearch}  ${adminInfo.id}`)
+    if (patientInfo.id && doctorInfo.id && adminInfo.id){
+      fetch('http://localhost:4000/assign', {
+        method: 'post',
+        headers: {'content-type' : 'application/json',
+              'Accept': 'application/json'},
+        body: JSON.stringify({
+          a_id : adminInfo.id,
+          p_id: patientInfo.id,
+          d_id: doctorInfo.id
+        })
+      })
+      .then(response => response.json())
+      .then(data => {
+        console.log(typeof(patientInfo.id))
+        alert(data)
+      })
     }else{
       alert('Enter all ID')
     }
@@ -51,16 +97,16 @@ function AppointmentAdmin() {
               </Button>
               </div>
               <div className='row'>
-                <p className='col-md-6' style={{fontSize: '2rem'}} > {patientInfo.name} </p>
-                <p className='col-md-6' style={{fontSize: '2rem'}} > {patientInfo.id} </p>
-                <p className='col-md-6' style={{fontSize: '2rem'}} > {patientInfo.phone} </p>
-                <p className='col-md-6' style={{fontSize: '2rem'}} > {patientInfo.email} </p>
+              <p className='col-md-6' style={{fontSize: '1.5rem'}} >{ patientInfo ? 'Name: ' + patientInfo.name : ''} </p>
+                <p className='col-md-6' style={{fontSize: '1.5rem'}} >{ patientInfo ? 'ID: ' + patientInfo.id : ''} </p>
+                <p className='col-md-6' style={{fontSize: '1.5rem'}} >{ patientInfo ? 'Phone ' + patientInfo.phone : ''} </p>
+                <p className='col-md-6' style={{fontSize: '1.5rem'}} >{ patientInfo ? 'Email: ' + patientInfo.email : ''} </p>
               </div>
 
               <h1 style={{fontSize: '2.5rem', fontWeight:'bold', marginBottom:'2rem'}}>Doctor Data</h1>
               <div className='row'>
               <input className='inputBox col-md-9'  type="text" placeholder="Doctor ID" autoFocus="1" 
-                onChange={(event) => setDocotorSearch(event.target.value)}/><br/>
+                onChange={(event) => setDoctorSearch(event.target.value)}/><br/>
               <Button  style={{backgroundColor:'#000', borderColor: '#000', fontWeight:'800', fontSize:'25px', height:'3rem', width:'10rem',  }}
                 onClick={searchDoctor}>
                 Search
@@ -68,10 +114,10 @@ function AppointmentAdmin() {
               </div>
 
               <div className='row'>
-              <p className='col-md-6' style={{fontSize: '2rem'}} > {doctorInfo.name} </p>
-                <p className='col-md-6' style={{fontSize: '2rem'}} > {doctorInfo.id} </p>
-                <p className='col-md-6' style={{fontSize: '2rem'}} > {doctorInfo.phone} </p>
-                <p className='col-md-6' style={{fontSize: '2rem'}} > {doctorInfo.email} </p>
+                <p className='col-md-6' style={{fontSize: '1.5rem'}} > {doctorInfo ? 'Name: '+ doctorInfo.name : ''} </p>
+                <p className='col-md-6' style={{fontSize: '1.5rem'}} > {doctorInfo ? 'ID: ' + doctorInfo.id : ''} </p>
+                <p className='col-md-6' style={{fontSize: '1.5rem'}} > {doctorInfo ? 'Phone: ' + doctorInfo.phone : ''} </p>
+                <p className='col-md-6' style={{fontSize: '1.5rem'}} > {doctorInfo ? 'Email: ' + doctorInfo.email : ''} </p>
               </div>
 
               <Button  style={{backgroundColor:'#0000ff', color:'#fff', borderColor: '#000', fontWeight:'800', fontSize:'25px', padding:'0.5rem 2rem'  }}

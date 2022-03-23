@@ -1,5 +1,3 @@
-
-
 let doctorInfo = {
     name: "Loading",
     id: "Loading",
@@ -9,14 +7,6 @@ let doctorInfo = {
     dutyTime: "Loading",
     education: "Loading",
     specialized: "Loading"
-}
-
-let patientInfo = {
-    name: "Name",
-    id: "ID",
-    phone: "Phone",
-    email: "Email",
-    address: "Address",
 }
 
 let previousMedicine = [
@@ -40,9 +30,6 @@ const setDoctorInfo = (data) => {
     doctorInfo = data
 }
 
-const setPatientInfo = (data) => {
-    patientInfo = data
-}
 
 const setPreviousMedicine = (data) => {
     previousMedicine = data
@@ -50,4 +37,4 @@ const setPreviousMedicine = (data) => {
 
 
 
-export {doctorInfo, patientInfo, previousMedicine, setDoctorInfo, setPatientInfo, setPreviousMedicine}
+export {doctorInfo, previousMedicine, setDoctorInfo, setPreviousMedicine}

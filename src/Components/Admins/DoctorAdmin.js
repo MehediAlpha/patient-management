@@ -5,7 +5,7 @@ function DoctorAdmin() {
   const [search, setSearch] = React.useState('')
   const [doctorInfo, setDoctorInfo] = React.useState('')
 
-  const [ID, setID] = React.useState('')
+  const [ID, setID] = React.useState()
   const [Password, setPassword] = React.useState('')
   const [Name, setName] = React.useState('')
   const [Phone, setPhone] = React.useState('')
@@ -27,8 +27,11 @@ function DoctorAdmin() {
       })
       .then(response => response.json())
       .then(data => {
-        console.log(data)
-        setDoctorInfo(data)
+        if(data === 'ID not found'){
+          alert(data)
+        }else{
+          setDoctorInfo(data)
+        }
       })
     }else{
       alert('Type ID')
@@ -37,7 +40,26 @@ function DoctorAdmin() {
 
   const doctorADD = () =>{
     if(ID && Password && Name && Phone && Email && Education && Specialized && DutyTime && Address) {
-      console.log(ID)
+      fetch('http://localhost:4000/addDoctor', {
+        method: 'post',
+        headers: {'content-type' : 'application/json',
+              'Accept': 'application/json'},
+        body: JSON.stringify({
+          id : ID,
+          password: Password,
+          name: Name,
+          email: Email,
+          address: Address,
+          phone: Phone,
+          dutyTime: DutyTime,
+          education: Education,
+          specialized: Specialized
+        })
+      })
+      .then(response => response.json())
+      .then(data => {
+        alert(data)
+      })
     }
     else{
       alert('Missed information')
@@ -60,14 +82,14 @@ function DoctorAdmin() {
               </div>
 
               <div className='row'>
-                <p className='col-md-6' style={{fontSize: '1.5rem'}} >Name: {doctorInfo.name} </p>
-                <p className='col-md-6' style={{fontSize: '1.5rem'}} >ID: {doctorInfo.id} </p>
-                <p className='col-md-6' style={{fontSize: '1.5rem'}} >Phone:  {doctorInfo.phone} </p>
-                <p className='col-md-6' style={{fontSize: '1.5rem'}} >Email: {doctorInfo.email} </p>
-                <p className='col-md-6' style={{fontSize: '1.5rem'}} >Education:  {doctorInfo.education} </p>
-                <p className='col-md-6' style={{fontSize: '1.5rem'}} >Duty Time: {doctorInfo.dutyTime} </p>
-                <p className='col-md-6' style={{fontSize: '1.5rem'}} >Specialized: {doctorInfo.specialized} </p>
-                <p className='col-md-12' style={{fontSize: '1.5rem'}} >Addresss: {doctorInfo.address} </p>
+                <p className='col-md-6' style={{fontSize: '1.5rem'}} > {doctorInfo ? 'Name: '+ doctorInfo.name : ''} </p>
+                <p className='col-md-6' style={{fontSize: '1.5rem'}} > {doctorInfo ? 'ID: ' + doctorInfo.id : ''} </p>
+                <p className='col-md-6' style={{fontSize: '1.5rem'}} > {doctorInfo ? 'Phone: ' + doctorInfo.phone : ''} </p>
+                <p className='col-md-6' style={{fontSize: '1.5rem'}} > {doctorInfo ? 'Email: ' + doctorInfo.email : ''} </p>
+                <p className='col-md-6' style={{fontSize: '1.5rem'}} > {doctorInfo ? 'Education: ' + doctorInfo.education : ''} </p>
+                <p className='col-md-6' style={{fontSize: '1.5rem'}} > {doctorInfo ? 'Duty Time: ' + doctorInfo.dutyTime : ''} </p>
+                <p className='col-md-6' style={{fontSize: '1.5rem'}} > {doctorInfo ? 'Specialized: ' + doctorInfo.specialized : ''} </p>
+                <p className='col-md-12' style={{fontSize: '1.5rem'}} > {doctorInfo ? 'Address: ' + doctorInfo.address : ''} </p>
               </div>
 
               <h1 style={{fontSize: '2.5rem', fontWeight:'bold', marginTop:'1.7rem'}}>Add doctor</h1>

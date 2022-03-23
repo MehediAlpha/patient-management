@@ -26,8 +26,11 @@ function PatientAdmin() {
       })
       .then(response => response.json())
       .then(data => {
-        console.log(data)
-        setPatientInfo(data)
+        if(data === 'ID not found'){
+          alert(data)
+        }else{
+          setPatientInfo(data)
+        }
       })
     }else{
       alert('Type ID')
@@ -36,7 +39,24 @@ function PatientAdmin() {
 
   const patientADD = () =>{
     if(ID && Password && Name && Phone && Email && RelativePhone && Address) {
-      
+      fetch('http://localhost:4000/addPatient', {
+        method: 'post',
+        headers: {'content-type' : 'application/json',
+              'Accept': 'application/json'},
+        body: JSON.stringify({
+          id : ID,
+          password: Password,
+          name: Name,
+          email: Email,
+          address: Address,
+          phone: Phone,
+          relative_phone: RelativePhone
+        })
+      })
+      .then(response => response.json())
+      .then(data => {
+        alert(data)
+      })
     }
     else{
       alert('Missed information')
@@ -59,12 +79,12 @@ function PatientAdmin() {
               </div>
 
               <div className='row'>
-              <p className='col-md-6' style={{fontSize: '1.5rem'}} >Name: {patientInfo.name} </p>
-              <p className='col-md-6' style={{fontSize: '1.5rem'}} >ID: {patientInfo.id} </p>
-              <p className='col-md-6' style={{fontSize: '1.5rem'}} >Phone: {patientInfo.phone} </p>
-              <p className='col-md-6' style={{fontSize: '1.5rem'}} >Relative Phone: {patientInfo.relative_phone} </p>
-              <p className='col-md-6' style={{fontSize: '1.5rem'}} >Email: {patientInfo.email} </p>
-              <p className='col-md-12' style={{fontSize: '1.5rem'}} >Address: {patientInfo.address} </p>
+                <p className='col-md-6' style={{fontSize: '1.5rem'}} >{ patientInfo ? 'Name: ' + patientInfo.name : ''} </p>
+                <p className='col-md-6' style={{fontSize: '1.5rem'}} >{ patientInfo ? 'ID: ' + patientInfo.id : ''} </p>
+                <p className='col-md-6' style={{fontSize: '1.5rem'}} >{ patientInfo ? 'Phone ' + patientInfo.phone : ''} </p>
+                <p className='col-md-6' style={{fontSize: '1.5rem'}} >{ patientInfo ? 'Relative Phone ' + patientInfo.relative_phone : ''} </p>
+                <p className='col-md-6' style={{fontSize: '1.5rem'}} >{ patientInfo ? 'Email: ' + patientInfo.email : ''} </p>
+                <p className='col-md-12' style={{fontSize: '1.5rem'}} >{ patientInfo ? ' ' + patientInfo.address : ''} </p>
               </div>
 
               <h1 style={{fontSize: '2.5rem', fontWeight:'bold', marginTop:'1.7rem'}}>Add Patient</h1>
